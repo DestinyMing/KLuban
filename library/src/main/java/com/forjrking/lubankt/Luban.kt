@@ -175,6 +175,11 @@ abstract class Builder<T, R>(private val owner: LifecycleOwner) {
         return this
     }
 
+    fun compressObserver(compressResult:OnCompressResult<T,R>): Builder<T, R> {
+        mCompressLiveData.onCompressListener(owner,compressResult)
+        return this
+    }
+
     fun setOutPutDir(outPutDir: String?): Builder<T, R> {
         mOutPutDir = outPutDir
         return this

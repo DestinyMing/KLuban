@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/XLuban.iml" filepath="$PROJECT_DIR$/.idea/XLuban.iml" group="XLuban" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="XLuban/app" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/library/library.iml" filepath="$PROJECT_DIR$/.idea/modules/library/library.iml" group="XLuban/library" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/KLubanNew.iml" filepath="$PROJECT_DIR$/.idea/KLubanNew.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/KLubanNew.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/KLubanNew.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/library/KLubanNew.library.iml" filepath="$PROJECT_DIR$/.idea/modules/library/KLubanNew.library.iml" />
     </modules>
   </component>
 </project>

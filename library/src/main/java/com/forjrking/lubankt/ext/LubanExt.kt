@@ -3,6 +3,7 @@ package com.forjrking.lubankt.ext
 import androidx.annotation.MainThread
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
+import java.lang.Exception
 
 /**
  * @description: 扩展
@@ -34,11 +35,40 @@ fun <T, R> CompressLiveData<T, R>.compressObserver(owner: LifecycleOwner,
     })
 }
 
-class CompressResult<T, R> {
+@MainThread
+fun <T, R> CompressLiveData<T, R>.onCompressListener(owner: LifecycleOwner,
+                                                   compressResult: OnCompressResult<T,R>
+) {
+    observe(owner, androidx.lifecycle.Observer {
+        when (it) {
+            is State.Start -> {
+                compressResult.onStart()
+            }
+            is State.Completion -> {
+                compressResult.onCompletion()
+            }
+            is State.Success -> {
+                compressResult.onSuccess(it.data)
+            }
+            is State.Error -> {
+                compressResult.onError(it.src!!)
+            }
+        }
+    })
+}
+
+open  class CompressResult<T, R> {
     var onStart: () -> Unit = {}
     var onCompletion: () -> Unit = {}
     var onSuccess: (data: R) -> Unit = {}
     var onError: (Throwable, T?) -> Unit = { _: Throwable, _: T? -> }
+}
+
+interface OnCompressResult<T,R>{
+    fun onStart()
+    fun onCompletion()
+    fun onSuccess(data:R)
+    fun onError(exception: T)
 }
 
 sealed class State<out T, out R> {
